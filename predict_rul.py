@@ -37,3 +37,11 @@ X_input, _, _ = prepare_features_and_target(input_df, scale=True, include_target
 # Predict RUL
 predicted_rul = model.predict(X_input)[0]
 print(f"Predicted Remaining Useful Life (RUL): {predicted_rul:.2f} cycles")
+ # Maintenance Scheduler Logic
+ 
+if predicted_rul < 20:
+    print(" Maintenance Alert: Immediate maintenance required!")
+elif predicted_rul < 50:
+    print(f" Schedule maintenance within the next 10–15 cycles.")
+else:
+    print(" System healthy. No immediate maintenance required.")
