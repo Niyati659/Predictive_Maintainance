@@ -1,3 +1,4 @@
+#non constant columns
 import pandas as pd
 column_names = ['unit_number', 'time_in_cycles',
                 'op_setting_1', 'op_setting_2', 'op_setting_3',

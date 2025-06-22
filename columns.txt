@@ -1,0 +1,28 @@
+column_names = [
+    'unit_number',        # Engine ID (unique for each engine)
+    'time_in_cycles',     # Time (cycle count, increases each time step per engine)
+    'op_setting_1',       # Operational setting 1 (e.g., altitude or environment)
+    'op_setting_2',       # Operational setting 2 (e.g., Mach number or flight condition)
+    'op_setting_3',       # Operational setting 3 (e.g., throttle resolver angle)
+    'T2',                 # Total temperature at fan inlet
+    'T24',                # Total temperature at low-pressure compressor (LPC) outlet
+    'T30',                # Total temperature at high-pressure compressor (HPC) outlet
+    'T50',                # Total temperature at low-pressure turbine (LPT) outlet
+    'P2',                 # Pressure at fan inlet
+    'P15',                # Total pressure in bypass-duct
+    'P30',                # Total pressure at HPC outlet
+    'Nf',                 # Physical fan speed (in RPM)
+    'Nc',                 # Physical core speed (in RPM)
+    'epr',                # Engine pressure ratio (P50 / P2)
+    'Ps30',               # Static pressure at HPC outlet
+    'phi',                # Ratio of fuel flow to Ps30 (proxy for fuel efficiency)
+    'NRf',                # Corrected fan speed
+    'NRc',                # Corrected core speed
+    'BPR',                # Bypass Ratio (ratio of bypass air to core air)
+    'farB',               # Fuel-air ratio in burner
+    'htBleed',            # Bleed Enthalpy (energy loss via bleed air)
+    'Nf_dmd',             # Demanded fan speed
+    'PCNfR_dmd',          # Demanded corrected fan speed
+    'W31',                # HPT (High-Pressure Turbine) coolant bleed
+    'W32'                 # LPT (Low-Pressure Turbine) coolant bleed
+]
