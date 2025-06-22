@@ -19,15 +19,17 @@ def computeRUL(df):
 
     return df
 
-def prepare_features_and_target(df, scale=False):
-    # Exclude unwanted columns
-    exclude_cols = ['unit_number', 'time_in_cycles', 'RUL']
+def prepare_features_and_target(df, scale=False, include_target=True):
+    exclude_cols = ['unit_number', 'time_in_cycles']
+    if include_target and 'RUL' in df.columns:
+        exclude_cols.append('RUL')
     if 'dataset_id' in df.columns:
         exclude_cols.append('dataset_id')
 
     features = df.columns.difference(exclude_cols)
     X = df[features]
-    y = df['RUL']
+
+    y = df['RUL'] if include_target and 'RUL' in df.columns else None
 
     scaler = None
     if scale:

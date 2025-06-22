@@ -2,12 +2,28 @@ import pandas as pd
 import numpy as np
 import joblib
 from sklearn.metrics import mean_absolute_error, mean_squared_error
+import matplotlib.pyplot as plt
 
 # Load trained XGBoost model
 model = joblib.load("xgb_model.pkl")
 
 # Get feature columns from training (saved earlier)
 feature_cols = model.get_booster().feature_names
+
+# Function to plot predictions
+def plot_predictions(true, predicted, dataset_id):
+    plt.figure(figsize=(8, 5))
+    plt.plot(true, label="True RUL", marker='o')
+    plt.plot(predicted, label="Predicted RUL", marker='x')
+    plt.title(f"Predicted vs True RUL – {dataset_id}")
+    plt.xlabel("Engine Index")
+    plt.ylabel("Remaining Useful Life (RUL)")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f"rul_plot_{dataset_id}.png")  # Saves the plot as image
+    plt.show()
+
 
 # Loop through each test set
 for file_id in ['FD001', 'FD002', 'FD003', 'FD004']:
@@ -41,3 +57,7 @@ for file_id in ['FD001', 'FD002', 'FD003', 'FD004']:
 
     print(f"MAE: {mae:.2f}")
     print(f" RMSE: {rmse:.2f}")
+    plot_predictions(true_rul, predictions, file_id)
+
+
+
