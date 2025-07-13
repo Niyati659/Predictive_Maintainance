@@ -31,12 +31,13 @@ def prepare_features_and_target(df, scale=False, include_target=True):
 
     y = df['RUL'] if include_target and 'RUL' in df.columns else None
 
-    scaler = None
     if scale:
         scaler = StandardScaler()
-        X = pd.DataFrame(scaler.fit_transform(X), columns=features)
-
-    return X, y, scaler
+        X_scaled = scaler.fit_transform(X)
+        X = pd.DataFrame(X_scaled, columns=features)
+        return X, y, scaler  # <-- Now returning scaler!
+    else:
+        return X, y, None
 
 
 # Converts raw .txt data to .csv, drops constants
