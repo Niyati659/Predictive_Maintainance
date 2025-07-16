@@ -34,7 +34,7 @@ Each row in the dataset represents one time step for one engine. The columns inc
 ## 🧪 Project Workflow
 
 1. **Data Preprocessing**
-   - Normalization
+   - StandardScaler
    - Engine-wise cycle grouping
    - Computation of actual RUL
 
